@@ -20,7 +20,7 @@ export const operaciones = {
     return peliculas;
   },
 
-  //funcion para distinguir los productores
+  //funcion para distingir los productores
   llamarProductores(peliculas) {
     let pelicula;
     let todosLosProductores = [];
@@ -53,6 +53,14 @@ export const operaciones = {
    
     return(puntuacion);
   },
+
+  //método de mostrar detalle de película
+  filtrarPorId(peliculas,idPelicula){
+    let peliculasDetalle= peliculas.filter(pelicula =>pelicula.id===idPelicula);
+    return peliculasDetalle[0];
+  },
+
+
 
 }
 

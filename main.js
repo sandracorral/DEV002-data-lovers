@@ -18,7 +18,7 @@ function dibujarCard(peliculas) {
     newDiv.classList.add("column");
     newDiv.setAttribute("id", pelicula.id);
 
-        imgHTML += '<div class="card">';
+      imgHTML += '<div class="card">';
 
         imgHTML += '<img class="imgCard" src="';
         imgHTML += pelicula.poster;
@@ -43,6 +43,8 @@ function dibujarCard(peliculas) {
       imgHTML += "</div>";
 
     newDiv.insertAdjacentHTML('beforeend', imgHTML)
+    newDiv.addEventListener("click", verDetallePelicula);
+
     document.getElementById("llamarImagenesdiv").appendChild(newDiv);
   }
 }
@@ -63,7 +65,16 @@ function ordenarPorAno() {
   
   dibujarCard(peliculasOrdenadas);
 }
+
+function verDetallePelicula() {
+ 
+  let micc= this.id
+  let pelicula= operaciones.filtrarPorId(data.films,micc);
+
   
+  document.getElementById("MostrarDetalle").innerHTML = "";
+  pelicula
+}
 
 //pintar productores
 function pintarProductores() {
@@ -78,7 +89,7 @@ function pintarProductores() {
   //CAMBIAR A llamarProductores
     let arregloProducer = operaciones.llamarProductores(data.films);
 
-    //Agregando la opción OTROS
+    //Agragando la opción OTROS
      let newOptionProducer = document.createElement("option");
     newOptionProducer.setAttribute("value","Todos los productores");
     newOptionProducer.setAttribute("label", "Todos los productores");
@@ -118,11 +129,11 @@ function pintarPromedio(peliculas){
     "promedio puntuación: " +peliculasCalculadas
 }
 
-function inicial(){
+function lanzadera(){
   pintarCard();
   pintarProductores();
   document.getElementById("btnordenardirector").addEventListener("click", ordenarPorDirector);
   document.getElementById("btnordenarano").addEventListener("click", ordenarPorAno);
 }
 
-window.onload = inicial;
+window.onload = lanzadera;
